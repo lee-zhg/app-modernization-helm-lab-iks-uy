@@ -16,12 +16,31 @@ Helm charts are stored in a Helm chart repository, which is an HTTP server that 
 
 In this lab you'll create a Helm chart repository and use it to deploy a small Java EE app to the IBM Cloud Kubernetes Service using the open source Helm CLI.
 
+
+### Pre-requisites
+
+1. Obtaining and installing the lab tools on non-Windows 7 platform
+
+    If you use web terminal during the lab, you may skip this section.
+
+    You have done these installation steps, you may skip this section. You only do these tasks once.
+
+    [Follow the instructions here](README_pre01.md)
+
+
 ### Setup
 
-1. Initialize Helm client
+1. Lab Environment Setup
+
+    Every time when you start a new terminal/command window, steps in the section must be performed to setup a new environment.
+
+    [Follow the instructions here](README_pre02.md)
+
+2. Initialize Helm client
 ```
    helm init --client-only
 ```
+
 
 ### Step 1: Clone the Github repo that contains the code, build an Open Liberty image of the app and then push it to the IBM Cloud Kubernetes container registry
 
@@ -49,7 +68,7 @@ In this lab you'll create a Helm chart repository and use it to deploy a small J
     mvn package
     ```
 
-7. Add a new name space in registry
+7. Add a new name space in registry to store your docker image
 
     ```
     ibmcloud  cr  namespace-add  uy_[your initial]
