@@ -174,6 +174,17 @@ You'll commands to get the endpoint and port number of your deployed Helm releas
 
 ![Online catalog](images/ss5.png)
 
+
+## Cleanup
+
+    ```
+    ibmcloud  cr  namespace-rm  $CRNAMESPACE  -f
+    helm del --purge pbw-liberty-mariadb
+    ```
+
+
+
+
 ## Summary
 
 With even small simple apps requiring multiple Kubernetes objects,  Helm charts greatly simplify the process of distributing and updating your Kubernetes based apps. Helm repos allow you to distribute your Helm charts via HTTP, further simplifying the process of distributing and deploying your apps.
