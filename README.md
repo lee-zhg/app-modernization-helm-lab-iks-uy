@@ -49,7 +49,15 @@ In this lab you'll create a Helm chart repository and use it to deploy a small J
     mvn package
     ```
 
-7. Build a docker image  by typing in (or copying and pasting in) the following (uncommented) commands
+7. Add a new name space in registry
+
+    ```
+    ibmcloud  cr  namespace-add  uy_[your initial]
+    export CRNAMESPACE=uy_[your initial]
+    ```
+    > Note: the new name space `uy_[your initial]` must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
+
+8. Build a docker image  by typing in (or copying and pasting in) the following (uncommented) commands
 
     >Note: if you don't have the environment variables in the command set, replace $CRNAMESPACE with your container registry namespace and $USERNAME with your lab user id.
 
@@ -57,13 +65,13 @@ In this lab you'll create a Helm chart repository and use it to deploy a small J
     docker build -t us.icr.io/$CRNAMESPACE/$USERNAME/pbw-mariadb-web:1.0.0 .
     ```
 
-8. Log in to the Container registry with the following command:
+9. Log in to the Container registry with the following command:
 
     ```bash
     ibmcloud  cr login
     ```
 
-9. Push the image to the IBM Container registry by typing in (or copying and pasting in) the following (uncommented) commands
+10. Push the image to the IBM Container registry by typing in (or copying and pasting in) the following (uncommented) commands
 
     >Note: if you don't have the environment variables in the command set, replace $CRNAMESPACE with your container registry namespace and $USERNAME with your lab user id.
 
@@ -77,12 +85,12 @@ In this lab you'll create a Helm chart repository and use it to deploy a small J
 
 2. Select your fork  of the repository **app-modernization-plants-by-websphere-jee6** that you forked in the previous lab.
 
-3. Using the Github's UI  file browser to  take a look at the files in the **chart** folder. This is a Helm chart with child charts for the web app and MariaDB  portions of the app. Since there already is a published chart for  MariaDB, it is listed  as a required child chart in the file **requirements.yaml** and you don't have to create a chart for the MariaDB portion of the app.
+3. Using the Github's UI file browser to  take a look at the files in the **chart** folder. This is a Helm chart with child charts for the web app and MariaDB  portions of the app. Since there already is a published chart for  MariaDB, it is listed  as a required child chart in the file **requirements.yaml** and you don't have to create a chart for the MariaDB portion of the app.
+
 
 ### Step 3: Create the artifacts for the Helm repository
 
-
-1. From your client terminal  type in (or copy and paste in) the following (uncommented) commands
+1. From your client terminal, type in (or copy and paste in) the following (uncommented) commands
 
     ```
     # Fetch required MariaDB chart
@@ -96,7 +104,7 @@ In this lab you'll create a Helm chart repository and use it to deploy a small J
 
 ### Step 4: Configure Helm to serve up the repo via HTTP
 
-1. In your terminal window type the following command, to start the local test Helm repository substituting for [PORT_NUMBER]. If you're using a web based terminal as part of an IBM instructor led workshop, use a port number derived from your username so it will be unique and not conflict with other users. The pattern is `9 + USER_NUMBER`. For example if your username is ``user023`` use port ``9023``, if your username is ``user009`` use port ``9009`` and so on. If you're using a terminal on your own machine use any free port number.
+1. In your terminal window, type the following command, to start the local test Helm repository substituting for [PORT_NUMBER]. If you're using a web based terminal as part of an IBM instructor led workshop, use a port number derived from your username so it will be unique and not conflict with other users. The pattern is `9 + USER_NUMBER`. For example if your username is ``user023`` use port ``9023``, if your username is ``user009`` use port ``9009`` and so on. If you're using a terminal on your own machine use any free port number.
 
     ```
     helm serve --address 127.0.0.1:[PORT_NUMBER] &
