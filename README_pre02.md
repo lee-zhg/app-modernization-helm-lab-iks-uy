@@ -12,7 +12,7 @@ Run these steps inside the console-in-a-browser environment provided by your ins
     ```
     export USERNAME=[your username]
     ``` 
-    > Note: [your username] is the id provide by the instructor. For example, user001, user002 and etc.
+    > Note: `[your username]` should be provided by the instructor. For example, user001, user002 and etc.
 
 3. Login to the IBM Cloud. If prompted, enter user name and password. 
 
@@ -25,7 +25,7 @@ Run these steps inside the console-in-a-browser environment provided by your ins
     ```sh
     ibmcloud ks clusters
     ```
-    Your Lite cluster should show up on the list.
+    Your Lite cluster should show up on the list. The cluster name should be in the format of `user###-cluster`, for example `user003-cluster`.
 
 5. Configure your Kubernetes client using this command. This will also configure your Kubernetes client for future login sessions by adding the command into your .bash_profile. Your cluster name should be in the format of user###-cluster. For example, if you have `user005`, the cluster should be `user005-cluster`.
 
