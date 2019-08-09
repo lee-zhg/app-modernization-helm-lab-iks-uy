@@ -53,6 +53,8 @@ Run these steps inside the console-in-a-browser environment provided by your ins
     kubectl apply -f https://raw.githubusercontent.com/IBM-Cloud/kube-samples/master/rbac/serviceaccount-tiller.yaml
 
     helm init --service-account tiller
+
+    helm init --upgrade
     ```
 
 
