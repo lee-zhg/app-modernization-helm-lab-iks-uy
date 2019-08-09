@@ -16,6 +16,8 @@ Helm charts are stored in a Helm chart repository, which is an HTTP server that 
 
 In this lab you'll create a Helm chart repository and use it to deploy a small Java EE app to the IBM Cloud Kubernetes Service using the open source Helm CLI.
 
+The instructions were adapted from https://github.com/IBMAppModernization/app-modernization-helm-lab-iks.
+
 
 ### Pre-requisites
 
