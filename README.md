@@ -181,10 +181,10 @@ You'll commands to get the endpoint and port number of your deployed Helm releas
 
 To remove the newly created name space and the newly deployed application,
 
-    ```
-    ibmcloud  cr  namespace-rm  $CRNAMESPACE  -f
-    helm del --purge pbw-liberty-mariadb
-    ```
+```
+ibmcloud  cr  namespace-rm  $CRNAMESPACE  -f
+helm del --purge pbw-liberty-mariadb
+```
 
 
 ## Summary
