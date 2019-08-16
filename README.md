@@ -109,21 +109,42 @@ The instructions were adapted from https://github.com/IBMAppModernization/app-mo
 3. Using the Github's UI file browser to  take a look at the files in the **chart** folder. This is a Helm chart with child charts for the web app and MariaDB  portions of the app. Since there already is a published chart for  MariaDB, it is listed  as a required child chart in the file **requirements.yaml** and you don't have to create a chart for the MariaDB portion of the app.
 
 
-### Step 3: Create the artifacts for the Helm repository
+### Step 3: Add a new chart to the local Helm repository
 
-1. From your client terminal, type in (or copy and paste in) the following (uncommented) commands
+1. From your client terminal, execute
 
     ```
-    # Fetch required MariaDB chart
     helm repo add ibmcom https://raw.githubusercontent.com/IBM/charts/master/repo/stable
-    helm dependency update chart/pbw-liberty-mariadb
+    ```
 
-    # Generate the chart archive.
+    This makes another repository (https://raw.githubusercontent.com/IBM/charts/master/repo/stable) accessable to you. `ibmcom` is the name of the new repository.
+
+2. Execute command to list all available repositories for the verification purpose. `ibmcom` should be one in the list.
+
+    ```
+    helm repo list
+    ```
+
+3. Execute command to update all dependency of your chart.
+
+    ```
+    helm dependency update chart/pbw-liberty-mariadb
+    ```
+    Your chart has a dependency of chart `ibm-mariadb-dev`. This adds the tar file `ibm-mariadb-dev-1.1.2.tgz` to folder `chart/pbw-liberty-mariadb/charts`. The tar file(chart) comes from the new repository added in the previous step.
+
+4. Package your chart and generate the chart archive.
+
+    ```
     helm package chart/pbw-liberty-mariadb -d ~/.helm/repository/local
 
+    Successfully packaged chart and saved it to: /Users/lee/.helm/repository/local/pbw-liberty-mariadb-1.0.0.tgz
     ```
+    One of the repositories available to you is `local`. By default, it points to folder `~/.helm/repository/local/`. The above command creates a .tar file `pbw-liberty-mariadb-1.0.0.tgz` in your local repository folder. 
+    
+    As the result, a new chart becomes available in your local repository.
 
-### Step 4: Configure Helm to serve up the repo via HTTP
+
+### Step 4: Configure Helm to serve up the local repository via HTTP
 
 1. In your terminal window, type the following command, to start the local test Helm repository substituting for [PORT_NUMBER]. If you're using a web based terminal as part of an IBM instructor led workshop, use a port number derived from your username so it will be unique and not conflict with other users. The pattern is `9 + USER_NUMBER`. For example if your username is ``user023`` use port ``9023``, if your username is ``user009`` use port ``9009`` and so on. If you're using a terminal on your own machine use any free port number.
 
@@ -136,6 +157,7 @@ The instructions were adapted from https://github.com/IBMAppModernization/app-mo
     ```
     curl http://127.0.0.1:[PORT_NUMBER]/charts/index.yaml
     ```
+
 
 ### Step 5: Deploy the legacy JEE app from your new Helm repo
 
