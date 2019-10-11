@@ -74,7 +74,7 @@ The instructions were adapted from https://github.com/IBMAppModernization/app-mo
 7. Add a new name space in registry to store your docker image
 
     ```
-    ibmcloud  cr  namespace-add  uy_[your initial]
+    ibmcloud  cr  namespace-add  movius_[your initial]
     export CRNAMESPACE=uy_[your initial]
     ```
     > Note: the new name space `uy_[your initial]` must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
