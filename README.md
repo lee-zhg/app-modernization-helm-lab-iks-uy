@@ -61,6 +61,7 @@ The instructions were adapted from https://github.com/IBMAppModernization/app-mo
 5. From a client terminal window clone the Git repo  with  the following commands  appending the HTTPS URL from your clipboard
 
     ```text
+    cd  ~
     git clone [HTTPS URL for NEW REPO]
     cd app-modernization-plants-by-websphere-jee6
     ```
