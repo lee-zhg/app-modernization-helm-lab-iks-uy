@@ -75,7 +75,7 @@ The instructions were adapted from https://github.com/IBMAppModernization/app-mo
 
     ```
     ibmcloud  cr  namespace-add  movius_[your initial]
-    export CRNAMESPACE=uy_[your initial]
+    export CRNAMESPACE=movius_[your initial]
     ```
     > Note: the new name space `uy_[your initial]` must be unique in the entire registry. If the new name space is not unique, change it slightly and try again.
 
